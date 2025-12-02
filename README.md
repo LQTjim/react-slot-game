@@ -124,6 +124,35 @@ npm run test:run
 - 避免直接 DOM 操作
 - 完整的測試覆蓋
 
+## GitHub Pages 部署
+
+項目已配置 GitHub Actions，當推送到 `main` 分支時會自動構建並部署到 GitHub Pages。
+
+### 設置步驟
+
+1. 在 GitHub 倉庫設置中啟用 GitHub Pages：
+
+   - 進入 Settings > Pages
+   - Source 選擇 "GitHub Actions"
+
+2. 推送代碼到 `main` 分支：
+
+   ```bash
+   git push origin main
+   ```
+
+3. GitHub Actions 會自動：
+
+   - 運行測試
+   - 構建項目
+   - 部署到 GitHub Pages
+
+4. 部署完成後，訪問：`https://LQTjim.github.io/react-slot-game/`
+
+### 手動觸發部署
+
+也可以在 GitHub Actions 頁面手動觸發 workflow。
+
 ## License
 
 MIT

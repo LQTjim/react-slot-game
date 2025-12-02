@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: process.env.NODE_ENV === "production" ? "/react-slot-game/" : "/",
   plugins: [react()],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"], // 優先解析 .tsx 和 .ts
@@ -13,4 +14,3 @@ export default defineConfig({
     testTimeout: 10000, // 設置全局測試超時時間為 10 秒
   },
 });
-
