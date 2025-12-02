@@ -1,0 +1,114 @@
+.reel {
+  width: 120px;
+  height: 360px;
+  background: #fff;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes reelSpin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2040px); /* 17 * 120px，顯示最後 3 個 slot */
+  }
+}
+
+.reel-slot {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  flex-shrink: 0;
+  background: #fff;
+  position: relative;
+}
+
+/* 確保 symbol-container 正確顯示 */
+.reel-slot .symbol-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel-slot:last-child {
+  border-bottom: none;
+}
+
+.reel-slot.winning {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.3),
+    rgba(255, 237, 78, 0.3)
+  );
+  animation: winningPulse 0.8s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.reel-slot.winning::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4px solid #ffd700;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+    inset 0 0 20px rgba(255, 215, 0, 0.4);
+  animation: winningGlow 1s ease-in-out infinite;
+}
+
+.reel-slot.winning::after {
+  content: "✨";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  animation: sparkle 1s ease-in-out infinite;
+}
+
+@keyframes winningPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes winningGlow {
+  0%,
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+      inset 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 1),
+      inset 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}

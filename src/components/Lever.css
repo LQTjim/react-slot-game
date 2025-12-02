@@ -1,0 +1,153 @@
+.lever-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lever {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 70px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.2s ease;
+}
+
+.lever.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+.lever.disabled .lever-handle {
+  background: linear-gradient(135deg, #888, #666);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lever-handle {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff4444, #cc0000, #8b0000);
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4), 0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 2px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 3;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  /* 讓把手底部稍微延伸，與底座連接 */
+  margin-bottom: -2px;
+}
+
+.lever-handle::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.lever-base {
+  width: 24px;
+  height: 150px;
+  background: linear-gradient(
+    180deg,
+    #e8e8e8 0%,
+    #d0d0d0 20%,
+    #b0b0b0 50%,
+    #909090 80%,
+    #707070 100%
+  );
+  border: 3px solid #505050;
+  border-top: 2px solid #a0a0a0;
+  border-radius: 0 0 12px 12px; /* 只有底部圓角 */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  margin-top: -2px; /* 讓底座稍微重疊把手，看起來更連接 */
+}
+
+.lever-base::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 24px;
+  background: linear-gradient(135deg, #909090, #606060);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  border: 2px solid #404040;
+}
+
+.lever-base::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1); /* 弱化陰影 */
+  border-radius: 1px;
+  opacity: 0.5; /* 進一步弱化 */
+}
+
+/* 拉動動畫 */
+.lever.pulling .lever-handle {
+  transform: translateY(40px) scale(0.95);
+  box-shadow: 0 4px 10px rgba(220, 20, 60, 0.3), 0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover 效果 */
+.lever:not(.disabled):hover .lever-handle {
+  transform: translateY(8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(220, 20, 60, 0.5), 0 5px 12px rgba(0, 0, 0, 0.3),
+    inset 0 2px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lever:not(.disabled):hover .lever-base {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active 效果 */
+.lever:not(.disabled):active .lever-handle {
+  transform: translateY(40px) scale(0.95);
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 禁用狀態的 hover */
+.lever.disabled:hover .lever-handle {
+  transform: none;
+  cursor: not-allowed;
+}

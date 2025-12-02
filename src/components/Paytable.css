@@ -1,0 +1,99 @@
+.paytable {
+  background: linear-gradient(135deg, #8b0000, #6b0000);
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.paytable-header {
+  color: #ffd700;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.paytable-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paytable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.paytable-row:last-child {
+  border-bottom: none;
+}
+
+.paytable-symbols {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.paytable-symbol {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.paytable-symbol:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: scale(1.1);
+}
+
+/* 特殊樣式：數字 7 */
+.paytable-row:first-child .paytable-symbol {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 20, 60, 0.3),
+    rgba(139, 0, 0, 0.3)
+  );
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 32px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-color: rgba(220, 20, 60, 0.5);
+}
+
+/* BAR 樣式 */
+.paytable-row:nth-child(2) .paytable-symbol {
+  background: linear-gradient(
+    135deg,
+    rgba(44, 62, 80, 0.4),
+    rgba(52, 73, 94, 0.4)
+  );
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.paytable-payout {
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
